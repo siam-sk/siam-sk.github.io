@@ -1,8 +1,19 @@
-import { useState } from 'react'
-// import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css'
 
 function App() {
+  // Set 'business' as the default dark theme
+  const [theme, setTheme] = useState('business');
   const [count, setCount] = useState(0)
+
+  const toggleTheme = () => {
+    setTheme(theme === 'business' ? 'corporate' : 'business');
+  };
+
+  // Set the theme on the html element
+  useEffect(() => {
+    document.querySelector('html').setAttribute('data-theme', theme);
+  }, [theme]);
 
   return (
     <>
