@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 
 function App() {
   const [theme, setTheme] = useState('business');
-  const [count, setCount] = useState(0)
 
   const toggleTheme = () => {
     const newTheme = theme === 'business' ? 'corporate' : 'business';
@@ -16,16 +16,14 @@ function App() {
   }, [theme]);
 
   return (
-    <>
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <main className="p-8">
-        <h1 className="text-4xl font-bold">MERN Stack Developer</h1>
-        <p className="py-6">
-          Building beautiful and functional web applications.
-        </p>
-      </main>
-    </>
-  )
+    <div className="font-sans relative ">
+      <div className="relative z-10">
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <Hero />
+        
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
