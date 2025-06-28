@@ -3,6 +3,7 @@ import './App.css'
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About'; 
+import Skills from './components/Skills'; 
 
 function App() {
   const [theme, setTheme] = useState('business');
@@ -21,7 +22,8 @@ function App() {
       <div className="relative z-10">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Hero />
-        <About /> 
+        <About />
+        <Skills /> 
       </div>
     </div>
   );
