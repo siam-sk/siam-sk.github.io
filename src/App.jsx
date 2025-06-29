@@ -6,6 +6,7 @@ import About from './components/About';
 import Education from './components/Education';
 import Skills from './components/Skills'; 
 import Projects from './components/Projects';
+import Contact from './components/Contact';
 
 function App() {
   const [theme, setTheme] = useState('dim');
@@ -28,6 +29,7 @@ function App() {
         <Education />
         <Skills /> 
         <Projects />
+        <Contact />
       </div>
     </div>
   );
