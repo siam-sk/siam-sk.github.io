@@ -29,7 +29,7 @@ const Hero = () => {
         >
           <img 
             src={profilePhoto} 
-            className="rounded-full shadow-2xl w-full h-full object-cover border-4 border-primary" 
+            className="rounded-full shadow-2xl w-full h-full object-cover border-4 border-neutral" 
             alt="Siam Sheikh"
           />
         </motion.div>
@@ -71,7 +71,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex items-center gap-4 justify-center lg:justify-start"
           >
-            <a href="#" className="btn btn-primary rounded-full">
+            <a href="#" className="btn btn-neutral rounded-full">
               Download Resume
             </a>
             <div className="flex gap-2">

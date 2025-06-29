@@ -6,10 +6,10 @@ import About from './components/About';
 import Skills from './components/Skills'; 
 
 function App() {
-  const [theme, setTheme] = useState('business');
+  const [theme, setTheme] = useState('dim');
 
   const toggleTheme = () => {
-    const newTheme = theme === 'business' ? 'corporate' : 'business';
+    const newTheme = theme === 'dim' ? 'nord' : 'dim';
     setTheme(newTheme);
   };
 
