@@ -24,7 +24,7 @@ const Navbar = ({ theme, toggleTheme }) => {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [activeLink, setActiveLink] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navItems = ['About', 'Projects', 'Contact'];
+  const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
 
   useEffect(() => {
     const handleScroll = () => {
