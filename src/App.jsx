@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About'; 
 import Education from './components/Education';
 import Skills from './components/Skills'; 
+import Projects from './components/Projects';
 
 function App() {
   const [theme, setTheme] = useState('dim');
@@ -26,6 +27,7 @@ function App() {
         <About />
         <Education />
         <Skills /> 
+        <Projects />
       </div>
     </div>
   );
