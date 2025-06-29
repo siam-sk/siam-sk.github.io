@@ -4,7 +4,7 @@ import { TypeAnimation } from 'react-type-animation';
 import profilePhoto from '../assets/hero.jpg';
 import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
-const Hero = () => {
+const Hero = ({ theme }) => {
   const socialLinks = [
     { icon: <FaGithub />, url: 'https://github.com/siam-sk' },
     { icon: <FaLinkedin />, url: 'https://www.linkedin.com/in/siammsheikh/' },
@@ -45,6 +45,7 @@ const Hero = () => {
           </motion.h1>
           
           <TypeAnimation
+            key={theme} // Add this key to force re-render on theme change
             sequence={[
               'Full Stack Developer', 2000,
               'MERN Stack Expert', 2000,
@@ -52,7 +53,7 @@ const Hero = () => {
             ]}
             wrapper="h2"
             speed={50}
-            className="text-2xl md:text-3xl font-medium text-primary mt-2"
+            className="text-2xl md:text-3xl font-medium mt-2 text-info"
             repeat={Infinity}
           />
 
@@ -71,7 +72,7 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex items-center gap-4 justify-center lg:justify-start"
           >
-            <a href="#" className="btn btn-neutral rounded-full">
+            <a href="#" className="btn btn-info rounded-full">
               Download Resume
             </a>
             <div className="flex gap-2">

@@ -9,7 +9,7 @@ function App() {
   const [theme, setTheme] = useState('dim');
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dim' ? 'nord' : 'dim';
+    const newTheme = theme === 'dim' ? 'winter' : 'dim';
     setTheme(newTheme);
   };
 
@@ -21,7 +21,7 @@ function App() {
     <div className="font-sans relative max-w-screen-1440 mx-auto">
       <div className="relative z-10">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <Hero />
+        <Hero theme={theme} />
         <About />
         <Skills /> 
       </div>
