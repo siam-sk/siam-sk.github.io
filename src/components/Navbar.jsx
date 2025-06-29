@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'; 
 import logoLight from '../assets/logo-white.png'; 
 import logoDark from '../assets/logo-black.png'; 
@@ -23,7 +23,18 @@ const navItemVariants = {
 const Navbar = ({ theme, toggleTheme }) => {
   const [hoveredLink, setHoveredLink] = useState(null);
   const [activeLink, setActiveLink] = useState('About');
+  const [isScrolled, setIsScrolled] = useState(false);
   const navItems = ['About', 'Projects', 'Contact'];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const navLinks = (
     <>
@@ -62,7 +73,7 @@ const Navbar = ({ theme, toggleTheme }) => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
      
-      className="navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-lg shadow-md border-b border-base-200/50 lg:px-12 sm:px-8"
+      className={`navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-lg lg:px-12 sm:px-8 transition-shadow duration-300 ${isScrolled ? 'shadow-lg shadow-black/10' : 'shadow-none'}`}
     >
       <div className="navbar-start">
         <div className="dropdown">

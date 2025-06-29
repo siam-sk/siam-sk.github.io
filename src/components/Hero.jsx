@@ -13,7 +13,7 @@ const Hero = ({ theme }) => {
 
   return (
     <div className="hero bg-transparent">
-      <div className="hero-content flex-col lg:flex-row-reverse gap-12 z-10 min-h-screen">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-12 lg:gap-40 z-10 min-h-screen pb-28">
         
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -25,37 +25,52 @@ const Hero = ({ theme }) => {
             duration: 0.8, 
             ease: 'easeOut'
           }}
-          className="w-64 h-64 md:w-80 md:h-80"
+          className="w-80 h-80 md:w-96 md:h-[26rem]" 
         >
           <img 
             src={profilePhoto} 
-            className="rounded-full shadow-2xl w-full h-full object-cover border-4 border-neutral" 
+            className="rounded-3xl shadow-2xl w-full h-full object-cover border-4 border-neutral" 
             alt="Siam Sheikh"
           />
         </motion.div>
 
         <div className="text-center lg:text-left">
-          <motion.h1 
+          <motion.p
             initial={{ x: -100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold"
+            className="text-lg text-info font-mono"
           >
-            Siam Sheikh
+            Hi, my name is
+          </motion.p>
+          <motion.h1 
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-5xl md:text-7xl font-bold mt-1"
+          >
+            Siam Sheikh.
           </motion.h1>
           
-          <TypeAnimation
-            key={theme} // Add this key to force re-render on theme change
-            sequence={[
-              'Full Stack Developer', 2000,
-              'MERN Stack Expert', 2000,
-              'React Enthusiast', 2000,
-            ]}
-            wrapper="h2"
-            speed={50}
-            className="text-2xl md:text-3xl font-medium mt-2 text-info"
-            repeat={Infinity}
-          />
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <TypeAnimation
+              key={theme}
+              sequence={[
+                "I'm a Full Stack Developer", 2000,
+                "I'm a MERN Stack Expert", 2000,
+                "I'm a React Enthusiast", 2000,
+                "I'm a Frontend Specialist", 2000,
+              ]}
+              wrapper="h2"
+              speed={50}
+              className="text-2xl md:text-4xl font-bold text-info mt-2"
+              repeat={Infinity}
+            />
+          </motion.div>
 
           <motion.p 
             initial={{ x: -100, opacity: 0 }}
