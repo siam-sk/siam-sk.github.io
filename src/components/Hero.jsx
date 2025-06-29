@@ -1,9 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FaGithub, FaLinkedin, FaFacebook, FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { FiDownload } from 'react-icons/fi';
-import { SiTailwindcss, SiJavascript, SiMongodb, SiExpress } from 'react-icons/si';
 
 import profilePhoto from '../assets/hero.jpg';
 
@@ -18,48 +17,44 @@ const Hero = ({ theme }) => {
     <div className="hero bg-transparent">
       <div className="hero-content flex-col lg:flex-row-reverse gap-12 lg:gap-40 z-10 min-h-screen pb-28 lg:pb-52">
         
-        {/* Animated photo for desktop */}
+        
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ 
-            scale: 1, 
-            opacity: 1
-          }}
-          transition={{ 
-            duration: 0.8, 
-            ease: 'easeOut'
-          }}
-          className="w-64 h-64 md:w-72 md:h-72 relative hidden lg:block" 
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="w-64 h-64 md:w-72 md:h-72 relative hidden lg:block"
         >
           
-          <motion.div
-            className="w-full h-full relative flex items-center justify-center"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-          >
-            {[
-              { icon: <FaReact className="text-sky-400" />, position: 'top-0' },
-              { icon: <FaNodeJs className="text-green-500" />, position: 'top-1/4 right-0' },
-              { icon: <SiMongodb className="text-green-600" />, position: 'bottom-1/4 right-0' },
-              { icon: <SiTailwindcss className="text-sky-500" />, position: 'bottom-0' },
-              { icon: <SiExpress />, position: 'bottom-1/4 left-0' },
-              { icon: <SiJavascript className="text-yellow-400" />, position: 'top-1/4 left-0' },
-            ].map((item, index) => (
-              <motion.div
-                key={index}
-                className={`absolute ${item.position} flex items-center justify-center w-16 h-16 bg-base-100/50 backdrop-blur-sm rounded-full shadow-lg`}
-                style={{ margin: '-2rem' }} 
-                animate={{ rotate: -360 }} 
-                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              >
-                <span className="text-4xl">{item.icon}</span>
-              </motion.div>
-            ))}
-          </motion.div>
+          <motion.img
+            src={profilePhoto}
+            alt="Siam Sheikh"
+            className="relative w-full h-full object-cover rounded-3xl shadow-2xl z-10"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 300 }}
+          />
+
           
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              className="absolute inset-0 border-2 border-info/30 rounded-3xl"
+              style={{
+                scale: 1 + i * 0.2,
+                rotate: i * 25,
+              }}
+              animate={{
+                rotate: 360 + i * 25,
+              }}
+              transition={{
+                duration: 25 + i * 10,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+            />
+          ))}
         </motion.div>
 
-        {/* Static photo for mobile */}
+        
         <div className="lg:hidden w-48 h-48 rounded-full shadow-2xl border-4 border-info/50">
           <img src={profilePhoto} alt="Siam Sheikh" className="w-full h-full object-cover rounded-full" />
         </div>
@@ -91,13 +86,13 @@ const Hero = ({ theme }) => {
               key={theme}
               sequence={[
                 "I'm a Full Stack Developer", 2000,
-                "I'm a MERN Stack Expert", 2000,
+                "I'm a MERN Stack Developer", 2000,
                 "I'm a React Enthusiast", 2000,
                 "I'm a Frontend Specialist", 2000,
               ]}
               wrapper="h2"
               speed={50}
-              className="text-2xl md:text-4xl font-bold text-info mt-2"
+              className="text-2xl md:text-3xl font-bold text-info mt-2"
               repeat={Infinity}
             />
           </motion.div>

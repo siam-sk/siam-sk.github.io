@@ -89,10 +89,17 @@ const Navbar = ({ theme, toggleTheme }) => {
     >
       <div className="navbar-start">
         <motion.a href="/" onClick={handleLogoClick} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-ghost px-2">
+          
           <img 
-            src={theme === 'dim' ? logoLight : logoDark} 
+            src={logoDark} 
             alt="Logo" 
-            className="h-9 w-auto"
+            className={`h-9 w-auto ${theme === 'winter' ? 'block' : 'hidden'}`}
+          />
+          
+          <img 
+            src={logoLight} 
+            alt="Logo" 
+            className={`h-9 w-auto ${theme === 'dim' ? 'block' : 'hidden'}`}
           />
         </motion.a>
       </div>
