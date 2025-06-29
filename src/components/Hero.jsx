@@ -113,7 +113,9 @@ const Hero = ({ theme }) => {
             className="flex flex-col lg:flex-row items-center gap-6 justify-center lg:justify-start mt-8"
           >
             <motion.a 
-              href="#" 
+              href="https://drive.google.com/file/d/1wjj94XsQ1ExU-_YrLhziAoSqrr5PFDRr/view?usp=sharing" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-info rounded-full shadow-lg shadow-info/30"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}

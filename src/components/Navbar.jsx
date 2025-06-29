@@ -124,7 +124,14 @@ const Navbar = ({ theme, toggleTheme }) => {
         </motion.label>
 
         
-        <motion.a whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-info hidden lg:flex">
+        <motion.a 
+          href="https://drive.google.com/file/d/1wjj94XsQ1ExU-_YrLhziAoSqrr5PFDRr/view?usp=sharing" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          whileHover={{ scale: 1.05 }} 
+          whileTap={{ scale: 0.95 }} 
+          className="btn btn-info hidden lg:flex"
+        >
           Resume
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 ml-2">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
@@ -140,7 +147,12 @@ const Navbar = ({ theme, toggleTheme }) => {
             {navLinks}
             <div className="divider my-1"></div>
             <li>
-              <a className="btn btn-info btn-sm justify-between">
+              <a 
+                href="https://drive.google.com/file/d/1wjj94XsQ1ExU-_YrLhziAoSqrr5PFDRr/view?usp=sharing" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-info btn-sm justify-between"
+              >
                 Resume
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />

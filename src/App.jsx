@@ -7,6 +7,7 @@ import Education from './components/Education';
 import Skills from './components/Skills'; 
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   const [theme, setTheme] = useState('dim');
@@ -30,6 +31,7 @@ function App() {
         <Skills /> 
         <Projects />
         <Contact />
+        <Footer theme={theme} />
       </div>
     </div>
   );

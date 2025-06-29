@@ -81,30 +81,30 @@ const Contact = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
+            
             <motion.form ref={form} onSubmit={sendEmail} variants={itemVariant} className="bg-base-100 p-8 rounded-xl shadow-lg space-y-6 border border-base-300/50">
-              {/* Name Input */}
+              
               <div className="relative">
                 <input type="text" id="user_name" name="user_name" className="input input-bordered w-full peer pt-6" placeholder=" " required />
                 <label htmlFor="user_name" className="absolute text-sm text-base-content/70 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-info peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
                   Your Name
                 </label>
               </div>
-              {/* Email Input */}
+              
               <div className="relative">
                 <input type="email" id="user_email" name="user_email" className="input input-bordered w-full peer pt-6" placeholder=" " required />
                 <label htmlFor="user_email" className="absolute text-sm text-base-content/70 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-info peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
                   Your Email
                 </label>
               </div>
-              {/* Message Textarea */}
+              
               <div className="relative">
                 <textarea id="message" name="message" className="textarea textarea-bordered h-36 w-full peer pt-6" placeholder=" " required></textarea>
                 <label htmlFor="message" className="absolute text-sm text-base-content/70 duration-300 transform -translate-y-3 scale-75 top-4 z-10 origin-[0] left-4 peer-focus:text-info peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-3">
                   Your Message
                 </label>
               </div>
-              <button type="submit" className="btn btn-info w-full bg-gradient-to-r from-info to-accent text-white hover:opacity-90 transition-opacity" disabled={isSending}>
+              <button type="submit" className="btn btn-info w-full" disabled={isSending}>
                 {isSending ? <span className="loading loading-spinner"></span> : 'Send Message'}
               </button>
               {formStatus.message && (
@@ -115,7 +115,7 @@ const Contact = () => {
               )}
             </motion.form>
 
-            {/* Contact Info Cards */}
+            
             <motion.div variants={itemVariant} className="space-y-6">
               {contactInfo.map((item, index) => (
                 <motion.a
