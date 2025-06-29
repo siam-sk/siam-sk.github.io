@@ -1,8 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import { FaGithub, FaLinkedin, FaFacebook, FaReact, FaNodeJs, FaHtml5, FaCss3Alt } from 'react-icons/fa';
+import { FiDownload } from 'react-icons/fi';
+import { SiTailwindcss, SiJavascript, SiMongodb, SiExpress } from 'react-icons/si';
+
 import profilePhoto from '../assets/hero.jpg';
-import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 
 const Hero = ({ theme }) => {
   const socialLinks = [
@@ -13,7 +16,7 @@ const Hero = ({ theme }) => {
 
   return (
     <div className="hero bg-transparent">
-      <div className="hero-content flex-col lg:flex-row-reverse gap-12 lg:gap-40 z-10 min-h-screen pb-28">
+      <div className="hero-content flex-col lg:flex-row-reverse gap-12 lg:gap-40 z-10 min-h-screen pb-28 lg:pb-52">
         
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
@@ -25,13 +28,34 @@ const Hero = ({ theme }) => {
             duration: 0.8, 
             ease: 'easeOut'
           }}
-          className="w-80 h-80 md:w-96 md:h-[26rem]" 
+          className="w-64 h-64 md:w-72 md:h-72 relative" 
         >
-          <img 
-            src={profilePhoto} 
-            className="rounded-3xl shadow-2xl w-full h-full object-cover border-4 border-neutral" 
-            alt="Siam Sheikh"
-          />
+          
+          <motion.div
+            className="w-full h-full relative flex items-center justify-center"
+            animate={{ rotate: 360 }}
+            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+          >
+            {[
+              { icon: <FaReact className="text-sky-400" />, position: 'top-0' },
+              { icon: <FaNodeJs className="text-green-500" />, position: 'top-1/4 right-0' },
+              { icon: <SiMongodb className="text-green-600" />, position: 'bottom-1/4 right-0' },
+              { icon: <SiTailwindcss className="text-sky-500" />, position: 'bottom-0' },
+              { icon: <SiExpress />, position: 'bottom-1/4 left-0' },
+              { icon: <SiJavascript className="text-yellow-400" />, position: 'top-1/4 left-0' },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className={`absolute ${item.position} flex items-center justify-center w-16 h-16 bg-base-100/50 backdrop-blur-sm rounded-full shadow-lg`}
+                style={{ margin: '-2rem' }} 
+                animate={{ rotate: -360 }} 
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+              >
+                <span className="text-4xl">{item.icon}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+          
         </motion.div>
 
         <div className="text-center lg:text-left">
@@ -85,16 +109,32 @@ const Hero = ({ theme }) => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="flex items-center gap-4 justify-center lg:justify-start"
+            className="flex items-center gap-6 justify-center lg:justify-start mt-8"
           >
-            <a href="#" className="btn btn-info rounded-full">
+            <motion.a 
+              href="#" 
+              className="btn btn-info rounded-full shadow-lg shadow-info/30"
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: 'spring', stiffness: 300 }}
+            >
               Download Resume
-            </a>
-            <div className="flex gap-2">
+              <FiDownload className="ml-2 h-5 w-5" />
+            </motion.a>
+            <div className="flex gap-4">
               {socialLinks.map((link, index) => (
-                <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="btn btn-ghost btn-circle">
-                  <span className="text-2xl">{link.icon}</span>
-                </a>
+                <motion.a 
+                  key={index} 
+                  href={link.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="p-2 border-2 border-base-content/30 rounded-full text-base-content/70 hover:text-info hover:border-info transition-colors duration-300"
+                  whileHover={{ scale: 1.2, y: -5 }}
+                  whileTap={{ scale: 0.9 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <span className="text-xl">{link.icon}</span>
+                </motion.a>
               ))}
             </div>
           </motion.div>

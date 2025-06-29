@@ -53,11 +53,11 @@ const Skills = () => {
               >
                 <div className="card-body">
                   <h3 className="card-title text-2xl justify-center mb-4">{categoryItem.category}</h3>
-                  <div className="flex flex-wrap gap-4 justify-center">
+                  <div className="grid grid-cols-2 gap-4 text-left">
                     {categoryItem.skills.map((skill) => (
-                      <div key={skill.name} className="flex items-center gap-2 bg-base-200 p-2 rounded-lg">
-                        <span className="text-2xl">{skill.icon}</span>
-                        <span>{skill.name}</span>
+                      <div key={skill.name} className="flex items-center gap-3">
+                        <span className="text-3xl">{skill.icon}</span>
+                        <span className="font-semibold">{skill.name}</span>
                       </div>
                     ))}
                   </div>
