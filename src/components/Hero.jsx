@@ -18,6 +18,7 @@ const Hero = ({ theme }) => {
     <div className="hero bg-transparent">
       <div className="hero-content flex-col lg:flex-row-reverse gap-12 lg:gap-40 z-10 min-h-screen pb-28 lg:pb-52">
         
+        {/* Animated photo for desktop */}
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ 
@@ -28,7 +29,7 @@ const Hero = ({ theme }) => {
             duration: 0.8, 
             ease: 'easeOut'
           }}
-          className="w-64 h-64 md:w-72 md:h-72 relative" 
+          className="w-64 h-64 md:w-72 md:h-72 relative hidden lg:block" 
         >
           
           <motion.div
@@ -57,6 +58,11 @@ const Hero = ({ theme }) => {
           </motion.div>
           
         </motion.div>
+
+        {/* Static photo for mobile */}
+        <div className="lg:hidden w-48 h-48 rounded-full shadow-2xl border-4 border-info/50">
+          <img src={profilePhoto} alt="Siam Sheikh" className="w-full h-full object-cover rounded-full" />
+        </div>
 
         <div className="text-center lg:text-left">
           <motion.p
@@ -109,7 +115,7 @@ const Hero = ({ theme }) => {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.8 }}
-            className="flex items-center gap-6 justify-center lg:justify-start mt-8"
+            className="flex flex-col lg:flex-row items-center gap-6 justify-center lg:justify-start mt-8"
           >
             <motion.a 
               href="#" 
