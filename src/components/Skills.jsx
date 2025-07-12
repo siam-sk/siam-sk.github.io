@@ -47,7 +47,7 @@ const Skills = () => {
     <section id="skills" className="py-16 bg-base-200 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold">My Technical Skills</h2>
+          <h2 className="text-4xl font-bold">Technical Skills</h2>
           <p className="text-lg text-base-content/60 mt-2">Technologies I use to build modern web applications.</p>
           <div className="w-24 h-1 bg-info mx-auto mt-4 rounded-full"></div>
         </div>

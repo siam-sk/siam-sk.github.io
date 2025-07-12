@@ -94,7 +94,7 @@ const Projects = () => {
             ref={ref}
             className="text-center mb-12"
           >
-            <h2 className="text-4xl font-bold">My Projects</h2>
+            <h2 className="text-4xl font-bold">Projects</h2>
             <p className="text-lg text-base-content/60 mt-2">A selection of my recent work.</p>
             <div className="w-24 h-1 bg-info mx-auto mt-4 rounded-full"></div>
           </motion.div>

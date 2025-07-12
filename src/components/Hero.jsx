@@ -5,6 +5,7 @@ import { FaGithub, FaLinkedin, FaFacebook } from 'react-icons/fa';
 import { FiDownload } from 'react-icons/fi';
 
 import profilePhoto from '../assets/hero.jpg';
+import profilePhoto2 from '../assets/hero2.jpg';
 
 const Hero = ({ theme }) => {
   const socialLinks = [
@@ -26,7 +27,7 @@ const Hero = ({ theme }) => {
         >
           
           <motion.img
-            src={profilePhoto}
+            src={profilePhoto2}
             alt="Siam Sheikh"
             className="relative w-full h-full object-cover rounded-3xl shadow-2xl z-10"
             whileHover={{ scale: 1.05 }}
@@ -56,7 +57,7 @@ const Hero = ({ theme }) => {
 
         
         <div className="lg:hidden w-48 h-48 rounded-full shadow-2xl border-4 border-info/50">
-          <img src={profilePhoto} alt="Siam Sheikh" className="w-full h-full object-cover rounded-full" />
+          <img src={profilePhoto2} alt="Siam Sheikh" className="w-full h-full object-cover rounded-full" />
         </div>
 
         <div className="text-center lg:text-left">

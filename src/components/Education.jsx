@@ -6,13 +6,13 @@ const educationData = [
   {
     degree: "Bachelor of Science in Computer Science & Engineering",
     institution: "United International University, Dhaka",
-    duration: "2021 - Present",
+    duration: "Present",
     description: "Focusing on core computer science principles, software development, and system design. Engaged in various projects involving web technologies and algorithms."
   },
   {
     degree: "Higher Secondary Certificate (HSC)",
     institution: "Dhaka College, Dhaka",
-    duration: "2017 - 2019",
+    duration: "2019",
     description: "Completed my higher secondary education with a focus on Science, building a strong foundation in mathematics and physics."
   }
 ];
@@ -44,7 +44,7 @@ const Education = () => {
           ref={ref}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl font-bold">My Education</h2>
+          <h2 className="text-4xl font-bold">Education</h2>
           <p className="text-lg text-base-content/60 mt-2">My academic journey and qualifications.</p>
           <div className="w-24 h-1 bg-info mx-auto mt-4 rounded-full"></div>
         </motion.div>
