@@ -114,7 +114,7 @@ const Hero = ({ theme }) => {
             className="flex flex-col lg:flex-row items-center gap-6 justify-center lg:justify-start mt-8"
           >
             <motion.a 
-              href="https://drive.google.com/file/d/1ceG7e0UWfUITloRiTXRRPoS47OodzUWc/view?usp=sharing" 
+              href="https://drive.google.com/file/d/1gTAVZKuPsOwwyxqAzAeKkBMyDnE2mcVn/view?usp=sharing" 
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-info rounded-full shadow-lg shadow-info/30"

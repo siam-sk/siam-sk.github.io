@@ -125,7 +125,7 @@ const Navbar = ({ theme, toggleTheme }) => {
 
         
         <motion.a 
-          href="https://drive.google.com/file/d/1ceG7e0UWfUITloRiTXRRPoS47OodzUWc/view?usp=sharing" 
+          href="https://drive.google.com/file/d/1gTAVZKuPsOwwyxqAzAeKkBMyDnE2mcVn/view?usp=sharing" 
           target="_blank" 
           rel="noopener noreferrer" 
           whileHover={{ scale: 1.05 }} 
@@ -148,7 +148,7 @@ const Navbar = ({ theme, toggleTheme }) => {
             <div className="divider my-1"></div>
             <li>
               <a 
-                href="https://drive.google.com/file/d/1ceG7e0UWfUITloRiTXRRPoS47OodzUWc/view?usp=sharing" 
+                href="https://drive.google.com/file/d/1gTAVZKuPsOwwyxqAzAeKkBMyDnE2mcVn/view?usp=sharing" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="btn btn-info btn-sm justify-between"
