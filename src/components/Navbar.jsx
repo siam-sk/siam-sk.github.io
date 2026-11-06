@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion'; 
-import logoLight from '../assets/logo-white.png'; 
-import logoDark from '../assets/logo-black.png'; 
-
+import { motion } from 'framer-motion';
+import { Link, NavLink, useLocation } from 'react-router-dom';
+import logoLight from '../assets/logo-white.png';
+import logoDark from '../assets/logo-black.png';
 
 const navContainerVariants = {
   hidden: { opacity: 0 },
@@ -10,7 +10,7 @@ const navContainerVariants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.3, 
+      delayChildren: 0.3,
     }
   }
 };
@@ -20,11 +20,18 @@ const navItemVariants = {
   visible: { y: 0, opacity: 1 }
 };
 
+const navLinksData = [
+  { name: 'Home', path: '/' },
+  { name: 'Experience', path: '/experience' },
+  { name: 'Projects', path: '/projects' },
+  { name: 'About', path: '/about' },
+  { name: 'Contact', path: '/contact' },
+];
+
 const Navbar = ({ theme, toggleTheme }) => {
   const [hoveredLink, setHoveredLink] = useState(null);
-  const [activeLink, setActiveLink] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
-  const navItems = ['About', 'Education', 'Skills', 'Projects', 'Contact'];
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,100 +43,97 @@ const Navbar = ({ theme, toggleTheme }) => {
     };
   }, []);
 
-  const handleLogoClick = (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-    
-    history.pushState("", document.title, window.location.pathname + window.location.search);
-    setActiveLink(null); 
-  };
-
-  const navLinks = (
-    <>
-      {navItems.map((item) => (
-        <motion.li 
-          key={item}
-          className="relative"
-          onMouseEnter={() => setHoveredLink(item)}
-          onMouseLeave={() => setHoveredLink(null)}
-          variants={navItemVariants} 
-          whileHover={{ y: -3 }}
-        >
-          <a 
-            href={`#${item.toLowerCase()}`}
-            onClick={() => setActiveLink(item)}
-            className={`text-base font-bold transition-colors duration-300 block px-3 py-2 cursor-pointer ${activeLink === item ? 'text-info' : ''}`}
-          >
-            {item}
-          </a>
-          {hoveredLink === item && (
-            <motion.div
-              className="absolute bottom-0 left-0 h-0.5 w-full bg-info"
-              layoutId="underline"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
-            />
-          )}
-        </motion.li>
-      ))}
-    </>
-  );
+  const resumeUrl = "/SIAM_SHEIKH_Resume.pdf";
 
   return (
     <motion.div
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: 'easeInOut' }}
-     
-      className={`navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-lg lg:px-12 sm:px-8 transition-shadow duration-300 ${isScrolled ? 'shadow-lg shadow-black/10' : 'shadow-none'}`}
+      className={`navbar sticky top-0 z-50 bg-base-100/80 backdrop-blur-lg lg:px-12 sm:px-8 transition-shadow duration-300 ${
+        isScrolled ? 'shadow-lg shadow-black/10' : 'shadow-none'
+      }`}
     >
       <div className="navbar-start">
-        <motion.a href="/" onClick={handleLogoClick} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-ghost px-2">
-          
-          <img 
-            src={logoDark} 
-            alt="Logo" 
-            className={`h-9 w-auto ${theme === 'winter' ? 'block' : 'hidden'}`}
-          />
-          
-          <img 
-            src={logoLight} 
-            alt="Logo" 
-            className={`h-9 w-auto ${theme === 'dim' ? 'block' : 'hidden'}`}
-          />
-        </motion.a>
+        <Link to="/" className="btn btn-ghost px-2">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex items-center">
+            <img
+              src={logoDark}
+              alt="Siam Sheikh Logo"
+              className={`h-9 w-auto ${theme === 'winter' ? 'block' : 'hidden'}`}
+            />
+            <img
+              src={logoLight}
+              alt="Siam Sheikh Logo"
+              className={`h-9 w-auto ${theme === 'dim' ? 'block' : 'hidden'}`}
+            />
+          </motion.div>
+        </Link>
       </div>
 
       <div className="navbar-end space-x-2">
-        <motion.ul 
-          className="menu menu-horizontal px-1 hidden lg:flex"
-          variants={navContainerVariants} 
+        <motion.ul
+          className="menu menu-horizontal px-1 hidden lg:flex items-center"
+          variants={navContainerVariants}
           initial="hidden"
           animate="visible"
         >
-          {navLinks}
+          {navLinksData.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <motion.li
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => setHoveredLink(item.name)}
+                onMouseLeave={() => setHoveredLink(null)}
+                variants={navItemVariants}
+                whileHover={{ y: -2 }}
+              >
+                <NavLink
+                  to={item.path}
+                  className={`text-base font-bold transition-colors duration-300 block px-3 py-2 cursor-pointer ${
+                    isActive ? 'text-info font-extrabold' : 'text-base-content/80 hover:text-info'
+                  }`}
+                >
+                  {item.name}
+                </NavLink>
+                {(hoveredLink === item.name || isActive) && (
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-0.5 w-full bg-info"
+                    layoutId="navbar-underline"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.25 }}
+                  />
+                )}
+              </motion.li>
+            );
+          })}
         </motion.ul>
 
-        
-        <motion.label whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="swap swap-rotate btn btn-ghost btn-circle">
+        {/* Theme Toggle */}
+        <motion.label
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className="swap swap-rotate btn btn-ghost btn-circle"
+          aria-label="Toggle dark/light theme"
+        >
           <input type="checkbox" onChange={toggleTheme} checked={theme === 'winter'} />
-          
-          <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
-          
-          <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
+          <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/>
+          </svg>
+          <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/>
+          </svg>
         </motion.label>
 
-        
-        <motion.a 
-          href="https://drive.google.com/file/d/1gTAVZKuPsOwwyxqAzAeKkBMyDnE2mcVn/view?usp=sharing" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          whileHover={{ scale: 1.05 }} 
-          whileTap={{ scale: 0.95 }} 
+        {/* Resume Button (Desktop) */}
+        <motion.a
+          href={resumeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
           className="btn btn-info hidden lg:flex"
         >
           Resume
@@ -138,20 +142,33 @@ const Navbar = ({ theme, toggleTheme }) => {
           </svg>
         </motion.a>
 
-        
+        {/* Mobile Dropdown */}
         <div className="dropdown dropdown-end lg:hidden">
-          <label tabIndex={0} className="btn btn-square btn-ghost">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+          <label tabIndex={0} className="btn btn-square btn-ghost" aria-label="Open navigation menu">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+            </svg>
           </label>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-            {navLinks}
+          <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow-xl bg-base-100 rounded-box w-52 border border-base-300">
+            {navLinksData.map((item) => (
+              <li key={item.name}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `py-2 text-base font-semibold ${isActive ? 'text-info font-bold bg-info/10' : ''}`
+                  }
+                >
+                  {item.name}
+                </NavLink>
+              </li>
+            ))}
             <div className="divider my-1"></div>
             <li>
-              <a 
-                href="https://drive.google.com/file/d/1gTAVZKuPsOwwyxqAzAeKkBMyDnE2mcVn/view?usp=sharing" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-info btn-sm justify-between"
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-info btn-sm justify-between text-white"
               >
                 Resume
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">

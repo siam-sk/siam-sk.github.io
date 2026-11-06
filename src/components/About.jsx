@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { FaReact, FaGraduationCap, FaPalette, FaGlobeAmericas } from 'react-icons/fa';
+import { FaLaptopCode, FaCogs, FaGlobeAmericas, FaLanguage } from 'react-icons/fa';
+import { SiWix, SiSquarespace } from 'react-icons/si';
 
 const About = () => {
   const ref = useRef(null);
@@ -10,7 +11,7 @@ const About = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.2 }
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
     }
   };
 
@@ -21,26 +22,30 @@ const About = () => {
 
   const highlights = [
     {
-      icon: <FaReact className="text-info" />,
-      title: "MERN Stack Developer",
-      text: "Building full-stack applications with MongoDB, Express.js, React, and Node.js."
-    },
-    
-    {
-      icon: <FaPalette className="text-info" />,
-      title: "Diverse Interests",
-      text: "Exploring graphics design, sysadmin, and networking."
+      icon: <FaLaptopCode className="text-info text-2xl" />,
+      title: "CMS Specialist (Wix & Squarespace)",
+      text: "Crafted 34+ bespoke, high-converting client websites with custom code injection, e-commerce, and third-party integrations."
     },
     {
-      icon: <FaGlobeAmericas className="text-info" />,
-      title: "Curious Mind",
-      text: "Passionate about geopolitics, history, and caring for my pet birds."
+      icon: <FaCogs className="text-info text-2xl" />,
+      title: "Full Stack & Modern Web Engineering",
+      text: "Building scalable web applications with React, Node.js, Express, MongoDB, TypeScript, and Tailwind CSS."
+    },
+    {
+      icon: <FaGlobeAmericas className="text-info text-2xl" />,
+      title: "International Client Delivery",
+      text: "Experienced in managing end-to-end deliverables, international stakeholder consultations, and technical support under tight deadlines."
+    },
+    {
+      icon: <FaLanguage className="text-info text-2xl" />,
+      title: "Languages & Communication",
+      text: "Bengali (Native) • English (Fluent Professional Proficiency) for cross-border collaboration."
     }
   ];
 
   return (
     <section id="about" className="py-16 bg-base-200 overflow-hidden"> 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <motion.div 
           ref={ref}
           initial="hidden"
@@ -48,30 +53,36 @@ const About = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariant} className="text-center mb-12">
+            <span className="badge badge-info badge-outline px-4 py-3 text-sm font-semibold mb-3">
+              Professional Profile
+            </span>
             <h2 className="text-4xl font-bold">About Me</h2>
             <div className="w-24 h-1 bg-info mx-auto mt-4 rounded-full"></div>
           </motion.div>
           
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div 
               variants={itemVariant}
               className="space-y-6 text-lg text-base-content/80 text-center lg:text-left"
             >
-              <p>
-                As a Junior Full Stack Developer with hands-on experience in the MERN stack, I'm passionate about building complete web solutions. My journey is supported by a strong academic foundation, as I'm currently pursuing my Bachelor's degree in Computer Science and Engineering, with prior familiarity in languages like C, Java, and PHP.
+              <p className="leading-relaxed">
+                I am a highly motivated and detail-oriented <strong className="text-base-content">Web Developer & Foreign Communication Executive</strong> with proven expertise in building responsive, user-centric websites using modern CMS platforms (<strong className="text-info">Wix</strong>, <strong className="text-info">Squarespace</strong>) and modern full-stack web technologies (<strong className="text-info">React</strong>, <strong className="text-info">Node.js</strong>, <strong className="text-info">Tailwind CSS</strong>).
               </p>
-              <p>
-                While my core focus is on modern web technologies, my curiosity extends to a wide range of fields including Graphics Design, Computer network and System Administration. This diverse interest allows me to approach problems with a holistic perspective, blending technical logic with creative design.
+              <p className="leading-relaxed">
+                Currently working at <strong className="text-base-content">Softvence IT Ltd</strong>, I spearhead client consultations, translate complex business requirements into high-performance web solutions, and collaborate with cross-functional teams to deliver exceptional digital experiences across global markets.
+              </p>
+              <p className="leading-relaxed">
+                Supported by my ongoing Bachelor's degree in Computer Science and Engineering at <strong className="text-base-content">United International University</strong>, I combine rigorous software engineering fundamentals with real-world client agility.
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariant} className="space-y-4">
+            <motion.div variants={itemVariant} className="grid grid-cols-1 gap-4">
               {highlights.map((item, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 bg-base-100 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
-                  <span className="text-2xl mt-1 text-info">{item.icon}</span>
+                <div key={index} className="flex items-start gap-4 p-5 bg-base-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-base-300/50">
+                  <div className="mt-1 flex-shrink-0">{item.icon}</div>
                   <div>
-                    <h4 className="font-bold text-xl mb-1">{item.title}</h4>
-                    <p className="text-base-content/70">{item.text}</p>
+                    <h4 className="font-bold text-lg mb-1">{item.title}</h4>
+                    <p className="text-base-content/70 text-sm leading-relaxed">{item.text}</p>
                   </div>
                 </div>
               ))}

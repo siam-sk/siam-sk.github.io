@@ -1,20 +1,25 @@
 import { useState, useEffect } from 'react';
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import About from './components/About'; 
-import Education from './components/Education';
-import Skills from './components/Skills'; 
-import Projects from './components/Projects';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+
+import Home from './pages/Home';
+import Experience from './pages/Experience';
+import ProjectsPage from './pages/ProjectsPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
 function App() {
-  const [theme, setTheme] = useState('dim');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('portfolio-theme') || 'dim';
+  });
 
   const toggleTheme = () => {
     const newTheme = theme === 'dim' ? 'winter' : 'dim';
     setTheme(newTheme);
+    localStorage.setItem('portfolio-theme', newTheme);
   };
 
   useEffect(() => {
@@ -22,18 +27,23 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="font-sans relative max-w-screen-1440 mx-auto">
-      <div className="relative z-10">
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="min-h-screen flex flex-col font-sans relative max-w-screen-1440 mx-auto bg-base-100 text-base-content transition-colors duration-300">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
-        <Hero theme={theme} />
-        <About />
-        <Education />
-        <Skills /> 
-        <Projects />
-        <Contact />
+        <main className="flex-grow relative z-10">
+          <Routes>
+            <Route path="/" element={<Home theme={theme} />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<Home theme={theme} />} />
+          </Routes>
+        </main>
         <Footer theme={theme} />
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
